@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E555C0D2413F4C50049A1A2 /* PitchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* PitchDetector.m */; };
-		F4FF95D7245B92E800C19C63 /*  PitchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /*  PitchDetector.swift */; };
+		7D89A7B529DB6F2B003874E3 /* BaseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D89A7B429DB6F2B003874E3 /* BaseProcessor.swift */; };
+		7D89A8DF29DB8895003874E3 /* PromiseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D89A8DE29DB8895003874E3 /* PromiseUtils.swift */; };
+		7D89A8E229DB88B6003874E3 /* PitchDetectorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D89A8E129DB88B5003874E3 /* PitchDetectorModule.swift */; };
+		7D89A99029DB8B50003874E3 /* PitchDetectorModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89A98F29DB8B50003874E3 /* PitchDetectorModuleBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +27,11 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libPitchDetector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPitchDetector.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5891CC2AC0600A0062D /* PitchDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PitchDetector.m; sourceTree = "<group>"; };
+		7D89A7B429DB6F2B003874E3 /* BaseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProcessor.swift; sourceTree = "<group>"; };
+		7D89A8DE29DB8895003874E3 /* PromiseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseUtils.swift; sourceTree = "<group>"; };
+		7D89A8E129DB88B5003874E3 /* PitchDetectorModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetectorModule.swift; sourceTree = "<group>"; };
+		7D89A98F29DB8B50003874E3 /* PitchDetectorModuleBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PitchDetectorModuleBridge.m; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* PitchDetector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PitchDetector-Bridging-Header.h"; sourceTree = "<group>"; };
-		F4FF95D6245B92E800C19C63 /* PitchDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +56,29 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				F4FF95D6245B92E800C19C63 /* PitchDetector.swift */,
-				B3E7B5891CC2AC0600A0062D /* PitchDetector.m */,
+				7D89A7B329DB6F0A003874E3 /* Utils */,
+				7D89A7B229DB6EF9003874E3 /* Processors */,
+				7D89A8E129DB88B5003874E3 /* PitchDetectorModule.swift */,
+				7D89A98F29DB8B50003874E3 /* PitchDetectorModuleBridge.m */,
 				F4FF95D5245B92E700C19C63 /* PitchDetector-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		7D89A7B229DB6EF9003874E3 /* Processors */ = {
+			isa = PBXGroup;
+			children = (
+				7D89A7B429DB6F2B003874E3 /* BaseProcessor.swift */,
+			);
+			path = Processors;
+			sourceTree = "<group>";
+		};
+		7D89A7B329DB6F0A003874E3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7D89A8DE29DB8895003874E3 /* PromiseUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,8 +138,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FF95D7245B92E800C19C63 /* PitchDetector.swift in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* PitchDetector.m in Sources */,
+				7D89A8DF29DB8895003874E3 /* PromiseUtils.swift in Sources */,
+				7D89A8E229DB88B6003874E3 /* PitchDetectorModule.swift in Sources */,
+				7D89A7B529DB6F2B003874E3 /* BaseProcessor.swift in Sources */,
+				7D89A99029DB8B50003874E3 /* PitchDetectorModuleBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
