@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_native_pitch_detector_docs=self.webpackChunkreact_native_pitch_detector_docs||[]).push([[938],{3769:function(e){e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"default"}')}}]);
