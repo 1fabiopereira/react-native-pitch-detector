@@ -37,7 +37,7 @@ jobs:
       run: yarn test
 
     - name: Typescript build
-      run: yarn build
+      run: yarn prepack
 
     - name: SonarCloud Scan Typescript
       run: yarn sonar

@@ -56,7 +56,7 @@ jobs:
 
     # Perform build project
     - name: Build
-      run: yarn build
+      run: yarn prepack
 
     # The last two steps will publish the package. Note that we're using
     # information from the `release` step above (I told you we'd use it
