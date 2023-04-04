@@ -1,0 +1,88 @@
+name: Release NPM package
+
+on:
+  release:
+      types: [created]
+
+jobs:
+  deploy-package:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the exact commit tagged on the release.
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+          ref: ${{ github.event.release.target_commitish }}
+
+    # This is the action in this repo! 👇
+    # Note we set an `id` called `release`. We'll use that later...
+    - name: Validate and extract release information
+      id: release
+      uses: manovotny/github-releases-for-automated-package-publishing-action@v1.0.0
+
+    # When setting the node version for publishing a release, it's also impotant
+    # to set `always-auth` and `registry-url` too. I've encountered vauge errors
+    # and publishing doesn't work unless they are supplied.
+    #
+    # This example is using NPM's registry. If you were publishing to GitHub's
+    # Package registry, you'd use `https://npm.pkg.github.com` instead.
+    - name: Use Node.js Version 16.x
+      uses: actions/setup-node@v2
+      with:
+          always-auth: true
+          node-version: 16.14.x
+          registry-url: 'https://registry.npmjs.org'
+    
+    # Perform installs dependencies
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    # Perform type check
+    - name: Type check
+      run: yarn typecheck
+    
+    # Perform lint
+    - name: Lint
+      run: yarn lint
+
+    # Perform check for circular dependencies
+    - name: Check circular dependencies
+      run: yarn circular
+
+    # Run Jest Unit Tests
+    - name: Run Jest Unit Tests
+      run: yarn test
+
+    # Perform build project
+    - name: Build
+      run: yarn build
+
+    # The last two steps will publish the package. Note that we're using
+    # information from the `release` step above (I told you we'd use it
+    # later). Notice the `if` statements on both steps...
+    #
+    # If there *is* a tag (ie. `beta`, `canary`, etc.), we publish a
+    # "pre-release" or "tagged" version of a package (ie. 1.2.3-beta.1).
+    #
+    # If there *is not* a tag (ie. `beta`, `canary`, etc.), we publish a
+    # version of a package (ie. 1.2.3).
+    #
+    # This example is using yarn to publish, but you could just as easily
+    # use npm, if you prefer. It's also publishing to the NPM registry,
+    # thus, it's using `NPM_TOKEN`, but you could just as easily use
+    # `GITHUB_TOKEN` if you were publishing to the GitHub Package registry.
+
+    # This will publish a "pre-release" or "tagged" version of a package.
+    - name: Publish tagged version
+      if: steps.release.outputs.tag != ''
+      run: yarn publish --new-version ${{ steps.release.outputs.version }} --tag ${{ steps.release.outputs.tag }}
+      env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    # This will publish a version of a package.
+    - name: Publish version
+      if: steps.release.outputs.tag == ''
+      run: yarn publish --new-version ${{ steps.release.outputs.version }}
+      env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
