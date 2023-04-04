@@ -23,7 +23,7 @@ end
 
 target 'PitchDetectorExample' do
   config = use_native_modules!
-
+  
   # Flags change depending on the env values.
   flags = get_default_flags()
 
@@ -42,7 +42,7 @@ target 'PitchDetectorExample' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-
+  
   target 'PitchDetectorExampleTests' do
     inherit! :complete
     # Pods for testing

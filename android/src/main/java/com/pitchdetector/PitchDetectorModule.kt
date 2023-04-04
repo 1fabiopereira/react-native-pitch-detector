@@ -66,6 +66,6 @@ class PitchDetectorModule(private val reactContext: ReactApplicationContext) : R
   }
 
   companion object {
-    const val NAME = "PitchDetector"
+    const val NAME = "PitchDetectorModule"
   }
 }

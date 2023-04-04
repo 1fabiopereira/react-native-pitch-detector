@@ -15,7 +15,18 @@
   return NO;
 }
 
-RCT_EXTERN_METHOD(start:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(supportedEvents)
+
+RCT_EXTERN_METHOD(startObserving)
+
+RCT_EXTERN_METHOD(stopObserving)
+
+
+RCT_EXTERN_METHOD(
+  start: (NSDictionary *)server
+         resolve: (RCTPromiseResolveBlock)resolve
+         reject: (RCTPromiseRejectBlock)reject
+)
 
 RCT_EXTERN_METHOD(stop:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 

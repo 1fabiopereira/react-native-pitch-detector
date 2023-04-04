@@ -9,16 +9,40 @@
 import Foundation
 
 @objc(PitchDetectorModule)
-class PitchDetectorModule: NSObject {
+open class PitchDetectorModule: RCTEventEmitter {
   private let processor = BaseProcessor()
   private var recording = false
+    
+    override public init() {
+        super.init()
+        EventEmitterUtils.shared.register(withRCTEventEmitter: self)
+    }
 
-  @objc(start:reject:)
-    func start(resolve:@escaping RCTPromiseResolveBlock,reject:@escaping RCTPromiseRejectBlock) -> Void {
+    @objc
+    override open func supportedEvents() -> [String]! {
+        return Events.allCases.map({ $0.rawValue })
+    }
+
+    @objc
+    override open func startObserving() {
+        EventEmitterUtils.shared.restore()
+    }
+
+    @objc
+    override open func stopObserving() {
+        EventEmitterUtils.shared.suspend()
+    }
+
+    @objc(start:resolve:reject:)
+    func start(
+        _ config: Dictionary<String, Any>,
+        resolve:@escaping RCTPromiseResolveBlock,
+        reject:@escaping RCTPromiseRejectBlock
+    ) -> Void {
     if (!self.recording) {
         let promise = PromiseUtils(resolve, reject)
         do {
-            processor.start()
+            processor.start(config)
             self.recording = true
             promise.resolve(nil)
         } catch {

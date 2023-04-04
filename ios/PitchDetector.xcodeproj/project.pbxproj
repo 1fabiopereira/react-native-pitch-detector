@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		339FC44329DC7EB7005F4A95 /* AlgorithmsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339FC44229DC7EB7005F4A95 /* AlgorithmsUtils.swift */; };
+		339FC44429DC9DD5005F4A95 /* PitchDetector-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D5245B92E700C19C63 /* PitchDetector-Bridging-Header.h */; };
+		339FC44629DCAA23005F4A95 /* EventEmitterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339FC44529DCAA23005F4A95 /* EventEmitterUtils.swift */; };
 		7D89A7B529DB6F2B003874E3 /* BaseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D89A7B429DB6F2B003874E3 /* BaseProcessor.swift */; };
 		7D89A8DF29DB8895003874E3 /* PromiseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D89A8DE29DB8895003874E3 /* PromiseUtils.swift */; };
 		7D89A8E229DB88B6003874E3 /* PitchDetectorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D89A8E129DB88B5003874E3 /* PitchDetectorModule.swift */; };
@@ -27,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libPitchDetector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPitchDetector.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		339FC44229DC7EB7005F4A95 /* AlgorithmsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmsUtils.swift; sourceTree = "<group>"; };
+		339FC44529DCAA23005F4A95 /* EventEmitterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitterUtils.swift; sourceTree = "<group>"; };
 		7D89A7B429DB6F2B003874E3 /* BaseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProcessor.swift; sourceTree = "<group>"; };
 		7D89A8DE29DB8895003874E3 /* PromiseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseUtils.swift; sourceTree = "<group>"; };
 		7D89A8E129DB88B5003874E3 /* PitchDetectorModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetectorModule.swift; sourceTree = "<group>"; };
@@ -53,13 +58,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		58B511D21A9E6C8500147676 = {
+		339FC44129DC7C4E005F4A95 /* PitchDetector */ = {
 			isa = PBXGroup;
 			children = (
 				7D89A7B329DB6F0A003874E3 /* Utils */,
 				7D89A7B229DB6EF9003874E3 /* Processors */,
 				7D89A8E129DB88B5003874E3 /* PitchDetectorModule.swift */,
 				7D89A98F29DB8B50003874E3 /* PitchDetectorModuleBridge.m */,
+			);
+			path = PitchDetector;
+			sourceTree = "<group>";
+		};
+		58B511D21A9E6C8500147676 = {
+			isa = PBXGroup;
+			children = (
+				339FC44129DC7C4E005F4A95 /* PitchDetector */,
 				F4FF95D5245B92E700C19C63 /* PitchDetector-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
@@ -77,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				7D89A8DE29DB8895003874E3 /* PromiseUtils.swift */,
+				339FC44229DC7EB7005F4A95 /* AlgorithmsUtils.swift */,
+				339FC44529DCAA23005F4A95 /* EventEmitterUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -138,7 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				339FC44629DCAA23005F4A95 /* EventEmitterUtils.swift in Sources */,
+				339FC44429DC9DD5005F4A95 /* PitchDetector-Bridging-Header.h in Sources */,
 				7D89A8DF29DB8895003874E3 /* PromiseUtils.swift in Sources */,
+				339FC44329DC7EB7005F4A95 /* AlgorithmsUtils.swift in Sources */,
 				7D89A8E229DB88B6003874E3 /* PitchDetectorModule.swift in Sources */,
 				7D89A7B529DB6F2B003874E3 /* BaseProcessor.swift in Sources */,
 				7D89A99029DB8B50003874E3 /* PitchDetectorModuleBridge.m in Sources */,
