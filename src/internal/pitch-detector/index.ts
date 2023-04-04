@@ -1,12 +1,15 @@
 import { NativeModules, NativeEventEmitter, Platform } from 'react-native';
-import { merge } from '../utils';
+import { Permissions } from '../permissions';
 import { PicthDetectorError } from '../erros';
+import { merge } from '../utils';
 
 import {
   type Callback,
   type NativeModuleImplementation,
   type PicthDetectorConfig,
   type Subscription,
+  type PicthDetectorAndroidConfig,
+  type PicthDetectorIOSConfig,
   PicthDetectorErrors,
 } from '../../types';
 
@@ -15,18 +18,14 @@ class InternalPitchDetector {
   private event?: NativeEventEmitter;
 
   constructor() {
-    this.module = NativeModules?.PitchDetector;
+    this.module = NativeModules?.PitchDetectorModule;
 
     if (this.module) {
       this.event = new NativeEventEmitter(this.module);
     }
 
-    if (!module && Platform.OS === 'android') {
+    if (!module) {
       throw new PicthDetectorError(PicthDetectorErrors.LINKING_ERROR);
-    }
-
-    if (!module && Platform.OS === 'ios') {
-      throw new PicthDetectorError(PicthDetectorErrors.UNAVAILABLE_ERROR);
     }
   }
 
@@ -36,25 +35,39 @@ class InternalPitchDetector {
    * @example
    * ```ts
    * {
-   *  algorithm: 'YIN',
-   *  bufferOverLap: 0,
-   *  bufferSize: 1024,
-   *  sampleRate: 22050,
+   *  android: {
+   *    algorithm: 'YIN',
+   *    bufferOverLap: 0,
+   *    bufferSize: 1024,
+   *    sampleRate: 22050,
+   *  },
+   *  ios: {
+   *    algorithm: 'YIN',
+   *    bufferSize: 1024,
+   *  }
    * }
-   * ```
    */
   private getDefaultConfig(): PicthDetectorConfig {
     return {
-      algorithm: 'YIN',
-      bufferOverLap: 0,
-      bufferSize: 1024,
-      sampleRate: 22050,
+      android: {
+        algorithm: 'YIN',
+        bufferOverLap: 0,
+        bufferSize: 1024,
+        sampleRate: 22050,
+      },
+      ios: {
+        algorithm: 'YIN',
+        bufferSize: 1024,
+      },
     };
   }
 
-  // TODO: improve implementation
-  private hasPermissions(): boolean {
-    return true;
+  /**
+   * Get current audio permission
+   * @returns Promise<boolean>
+   */
+  private async hasPermissions(): Promise<boolean> {
+    return !!(await Permissions.audio());
   }
 
   /**
@@ -78,7 +91,9 @@ class InternalPitchDetector {
    */
   async start(config?: PicthDetectorConfig): Promise<void> {
     try {
-      if (!this.hasPermissions()) {
+      const permission = await this.hasPermissions();
+
+      if (!permission) {
         throw new PicthDetectorError(PicthDetectorErrors.PERMISSIONS_ERROR);
       }
 
@@ -87,7 +102,12 @@ class InternalPitchDetector {
         config || {}
       );
 
-      await this.module?.start(configuration);
+      const params = Platform.select({
+        android: configuration.android as unknown,
+        ios: configuration.ios as unknown,
+      }) as PicthDetectorIOSConfig | PicthDetectorAndroidConfig;
+
+      await this.module?.start(params);
     } catch (err: unknown) {
       console.warn(err);
     }

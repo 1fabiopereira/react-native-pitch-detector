@@ -1,5 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { PitchDetector } from 'react-native-pitch-detector';
 
 export default function App() {
@@ -7,7 +8,10 @@ export default function App() {
   const [isRecording, setIsRecording] = React.useState(false);
 
   const start = async () => {
-    await PitchDetector.start({ algorithm: 'FFT_YIN' });
+    await PitchDetector.start({
+      android: { algorithm: 'YIN' },
+      ios: { algorithm: 'YIN' },
+    });
     const status = await PitchDetector.isRecording();
     setIsRecording(status);
   };
@@ -28,13 +32,16 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.tone}>{data?.tone}</Text>
-      <Text />
-      <Text style={styles.frequency}>{data?.frequency}</Text>
-      <Text>recording: {String(isRecording)}</Text>
-      <Text />
-      <Button onPress={start} title="Start" />
-      <Text />
-      <Button onPress={stop} title="Stop" />
+      <Text style={styles.frequency}>{data?.frequency?.toFixed(1)}hz</Text>
+      <Text style={[styles.status, { color: isRecording ? 'green' : 'red' }]}>
+        {isRecording ? 'ON' : 'OFF'}
+      </Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={isRecording ? stop : start}
+      >
+        <Text style={styles.label}>{isRecording ? 'STOP' : 'START'}</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -42,10 +49,31 @@ export default function App() {
 const styles = StyleSheet.create({
   tone: {
     fontSize: 40,
+    fontColor: 'black',
   },
 
   frequency: {
-    fontSize: 30,
+    fontSize: 20,
+  },
+
+  button: {
+    marginTop: 20,
+    backgroundColor: 'black',
+    width: '50%',
+    minHeight: 50,
+    borderRadius: 100,
+    justifyContent: 'center',
+  },
+
+  label: {
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+
+  status: {
+    marginTop: 16,
+    color: 'black',
   },
 
   container: {
@@ -53,6 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   box: {
     width: 60,
     height: 60,

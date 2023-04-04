@@ -1,11 +1,38 @@
 import type { NativeModule, EmitterSubscription } from 'react-native';
 import type { Float, Int32 } from 'react-native/Libraries/Types/CodegenTypes';
+import { PermissionStatus, Rationale } from 'react-native-permissions';
+
+/**
+ * Permission handler comparable callback
+ */
+export type Comparable = (status: PermissionStatus) => boolean;
+
+/**
+ * Permission handler response
+ */
+export type Response = Promise<PermissionStatus | boolean | null>;
+
+/**
+ * Permission handler
+ */
+export type PermissionsHandlers = {
+  /**
+   * Request permission
+   * @returns Promise<PermissionStatus | boolean | null>
+   */
+  RequestPermission: (rationale?: Rationale, compare?: Comparable) => Response;
+
+  /**
+   * Check permission
+   * @returns Promise<PermissionStatus | boolean | null>
+   */
+  CheckPermission: (compare?: Comparable) => Response;
+};
 
 export enum PicthDetectorErrors {
   BASE,
   LINKING_ERROR,
   PERMISSIONS_ERROR,
-  UNAVAILABLE_ERROR,
 }
 
 /**
@@ -48,10 +75,10 @@ export type Data = {
 export type Callback = (data: Data) => void;
 
 /**
- * Available pitch estimation algorithm.
+ * Available pitch estimation algorithm for Android.
  * @see `https://0110.be/releases/TarsosDSP/TarsosDSP-latest/TarsosDSP-latest-Documentation/`
  */
-export type PitchEstimationAlgorithm =
+export type PitchEstimationAndroidAlgorithm =
   | 'AMDF'
   | 'DYNAMIC_WAVELET'
   | 'FFT_PITCH'
@@ -60,13 +87,37 @@ export type PitchEstimationAlgorithm =
   | 'YIN';
 
 /**
- * Pitch detector configuration.
+ * Available pitch estimation algorithm for IOS.
+ * @see `https://github.com/vadymmarkov/Beethoven#configuration`
  */
-export type PicthDetectorConfig = {
-  algorithm?: PitchEstimationAlgorithm;
+export type PitchEstimationIOSAlgorithm =
+  | 'BARYCENTRIC'
+  | 'HPS'
+  | 'JAINS'
+  | 'MAX_VALUE'
+  | 'QUADRACTIC'
+  | 'QUINNS_FIRST'
+  | 'QUINNS_SECOND'
+  | 'YIN';
+
+export type PicthDetectorAndroidConfig = {
+  algorithm?: PitchEstimationAndroidAlgorithm;
   bufferOverLap?: Int32;
   bufferSize?: Int32;
   sampleRate?: Float;
+};
+
+export type PicthDetectorIOSConfig = {
+  algorithm?: PitchEstimationIOSAlgorithm;
+  bufferSize?: Int32;
+};
+
+/**
+ * Pitch detector configuration.
+ */
+export type PicthDetectorConfig = {
+  android?: PicthDetectorAndroidConfig;
+  ios?: PicthDetectorIOSConfig;
 };
 
 /**
@@ -76,18 +127,11 @@ export interface NativeModuleImplementation extends NativeModule {
   /**
    * Start audio recording and pitch detection with provided configs
    * @param config
-   * @default
-   * ```ts
-   * {
-   *  algorithm: 'YIN',
-   *  bufferOverLap: 0,
-   *  bufferSize: 1024,
-   *  sampleRate: 22050,
-   * }
-   * ```
    * @returns Promise<void>
    */
-  start: (config: PicthDetectorConfig) => Promise<void>;
+  start: (
+    config: PicthDetectorAndroidConfig | PicthDetectorIOSConfig
+  ) => Promise<void>;
 
   /**
    * Stop audio recording and pitch detection
