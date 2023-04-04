@@ -10,12 +10,17 @@ npm install react-native-pitch-detector
 
 ## Usage
 
-```js
-import { multiply } from 'react-native-pitch-detector';
+```ts
+import { PitchDetector } from 'react-native-pitch-detector';
 
-// ...
+// To start
+await PitchDetector.start();
 
-const result = await multiply(3, 7);
+// To stop
+await PitchDetector.stop();
+
+// To get current status
+await PitchDetector.isRecording();
 ```
 
 ## Contributing
