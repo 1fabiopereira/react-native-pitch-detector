@@ -4,6 +4,7 @@
 coverage/
 example/
 scripts/
+src/__tests__/
 
 # lib
 lib/typescript/example/
