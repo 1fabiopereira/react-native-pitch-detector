@@ -34,21 +34,14 @@ open class PitchDetectorModule: RCTEventEmitter {
     }
 
     @objc(start:resolve:reject:)
-    func start(
-        _ config: Dictionary<String, Any>,
-        resolve:@escaping RCTPromiseResolveBlock,
-        reject:@escaping RCTPromiseRejectBlock
-    ) -> Void {
+    func start(_ config: Dictionary<String, Any>, resolve:@escaping RCTPromiseResolveBlock, reject:@escaping RCTPromiseRejectBlock) -> Void {
     if (!self.recording) {
         let promise = PromiseUtils(resolve, reject)
-        do {
-            processor.start(config)
-            self.recording = true
-            promise.resolve(nil)
-        } catch {
-            self.recording = false
-            promise.reject(error as NSError)
-        }
+        
+        processor.start(config)
+        self.recording = true
+        
+        return promise.resolve(nil)
     }
   }
     
@@ -56,24 +49,17 @@ open class PitchDetectorModule: RCTEventEmitter {
     func stop(resolve:@escaping RCTPromiseResolveBlock,reject:@escaping RCTPromiseRejectBlock) -> Void {
     if (self.recording) {
         let promise = PromiseUtils(resolve, reject)
-        do {
-            processor.stop()
-            self.recording = false
-            promise.resolve(nil)
-        } catch {
-            self.recording = false
-            promise.reject(error as NSError)
-        }
+        
+        processor.stop()
+        self.recording = false
+        
+        return promise.resolve(nil)
     }
   }
 
   @objc(isRecording:reject:)
     func isRecording(resolve:@escaping RCTPromiseResolveBlock,reject:@escaping RCTPromiseRejectBlock) -> Void {
     let promise = PromiseUtils(resolve, reject)
-    do {
-        promise.resolve(self.recording)
-    } catch {
-        promise.reject(error as NSError)
-    }
+    return promise.resolve(self.recording)
   }
 }
