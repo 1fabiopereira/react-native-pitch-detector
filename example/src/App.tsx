@@ -8,10 +8,7 @@ export default function App() {
   const [isRecording, setIsRecording] = React.useState(false);
 
   const start = async () => {
-    await PitchDetector.start({
-      android: { algorithm: 'YIN' },
-      ios: { algorithm: 'YIN' },
-    });
+    await PitchDetector.start();
     const status = await PitchDetector.isRecording();
     setIsRecording(status);
   };

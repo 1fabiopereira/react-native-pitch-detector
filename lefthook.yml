@@ -5,14 +5,17 @@ pre-commit:
       files: git diff --name-only @{push}
       glob: "*.{js,ts,jsx,tsx}"
       run: npx eslint {files}
+
     types:
       files: git diff --name-only @{push}
       glob: "*.{js,ts, jsx, tsx}"
       run: npx tsc --noEmit
+
     circular:
       files: git diff --name-only @{push}
       glob: "*.{js,ts, jsx, tsx}"
       run: npx madge --circular src/index.ts --no-spinner --warning
+
 commit-msg:
   parallel: true
   commands:

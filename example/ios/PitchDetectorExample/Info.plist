@@ -43,7 +43,7 @@
 	<array>
 		<string>armv7</string>
 	</array>
-  <key>NSMicrophoneUsageDescription</key>
+   <key>NSMicrophoneUsageDescription</key>
    <string>Perform pitch detection</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

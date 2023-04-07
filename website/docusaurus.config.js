@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'React Native Picth Detector',
-  tagline:
-    'This library allows you to extract pdfs file data using matches specifics patterns.',
+  staticDirectories: ['static'],
+  tagline: 'High performance real time pitch detection.',
   url: 'https://1fabiopereira.github.io/',
   baseUrl: '/react-native-pitch-detector/',
   onBrokenLinks: 'throw',
