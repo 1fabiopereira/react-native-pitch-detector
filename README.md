@@ -22,7 +22,7 @@
 
 <p align="center"> High performance real time pitch detection.</p>
 
-## [Documentation](https://1fabiopereira.github.io/react-native-pdf-extractor/)
+## [Documentation](https://1fabiopereira.github.io/react-native-pitch-detector/)
 - ### [Getting Started](https://1fabiopereira.github.io/react-native-pitch-detector/docs/before-you-start)
     - [Before you start](https://1fabiopereira.github.io/react-native-pitch-detector/docs/before-you-start)
     
