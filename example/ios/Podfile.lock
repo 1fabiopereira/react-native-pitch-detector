@@ -619,7 +619,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 1579bf3207afadc72ac3638a66a102d1bf5263e3
   React-jsinspector: 14a342151ab810862998dfc99e2720746734e9b3
   React-logger: 94ec392ae471683635e4bf874d4e82f675399d2d
-  react-native-pitch-detector: 89ba140b11ebe97eb30d2e0f1f5be4fb06b8e64e
+  react-native-pitch-detector: 1208843b2b47df38210a8ed5cf4905e35457b858
   React-perflogger: 883a55a9a899535eaf06d0029108ef9ef22cce92
   React-RCTActionSheet: 1a3b8416688a3d291367be645022886f71d6842a
   React-RCTAnimation: e5560cb72d91ba35151d51e2eb0d467b42763f43
