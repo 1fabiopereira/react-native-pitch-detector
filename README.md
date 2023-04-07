@@ -1,36 +1,42 @@
-# react-native-pitch-detector
+<h1 align="center">
+    <h1 align="center">
+        <img src="./website/static/img/react-native-pitch-detector.svg" alt="React Native Pitch Detector Logo" height="200px" /><br />
+        React Native Pitch Detector
+    </h1>
+</h1>
 
-A react native pitch detector library
+<p align="center">
+    <a href="https://www.npmjs.com/package/react-native-pitch-detector">
+        <img src="https://img.shields.io/npm/dw/react-native-pitch-detector.svg?style=flat-square" alt="NPM downloads" />
+    </a>
+    <a href="https://www.npmjs.com/package/react-native-pitch-detector">
+        <img src="https://img.shields.io/npm/v/react-native-pitch-detector?style=flat-square" alt="NPM version" />
+    </a>
+    <a href="https://1fabiopereira.github.io/react-native-pitch-detector/docs/license">
+    <a href="https://sonarcloud.io/project/overview?id=code-leak_react-native-pitch-detector">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=code-leak_react-native-pitch-detector&metric=alert_status" alt="Sonar Cloud" />
+    </a>
+        <img src="https://img.shields.io/github/license/1fabiopereira/react-native-pitch-detector?style=flat-square" alt="Package License" />
+    </a>
+</p>
 
-## Installation
+<p align="center"> High performance real time pitch detection.</p>
 
-```sh
-npm install react-native-pitch-detector
-```
+## [Documentation](https://1fabiopereira.github.io/react-native-pdf-extractor/)
+- ### [Getting Started](https://1fabiopereira.github.io/react-native-pitch-detector/docs/before-you-start)
+    - [Before you start](https://1fabiopereira.github.io/react-native-pitch-detector/docs/before-you-start)
+    
+    - [Installation](https://1fabiopereira.github.io/react-native-pitch-detector/docs/installation)
+    
+    - [Usage](https://1fabiopereira.github.io/react-native-pitch-detector/docs/usage)
 
-## Usage
+     - [Playground](https://1fabiopereira.github.io/react-native-pitch-detector/docs/playground)
 
-```ts
-import { PitchDetector } from 'react-native-pitch-detector';
+- ### [Meta](https://1fabiopereira.github.io/react-native-pitch-detector/docs/contributing)
+    - [Contributing](https://1fabiopereira.github.io/react-native-pitch-detector/docs/contributing)
 
-// To start
-await PitchDetector.start();
+    - [Code of Conduct](https://1fabiopereira.github.io/react-native-pitch-detector/docs/code-of-conduct)
 
-// To stop
-await PitchDetector.stop();
+    - [License](https://1fabiopereira.github.io/react-native-pitch-detector/docs/license)
 
-// To get current status
-await PitchDetector.isRecording();
-```
 
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
