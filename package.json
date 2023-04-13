@@ -1,6 +1,6 @@
 {
   "name": "react-native-pitch-detector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "High performance real time pitch detection.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -8,7 +8,7 @@
   "react-native": "src/index",
   "source": "src/index",
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "jest --coverage --detectOpenHandles --silent",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
@@ -56,6 +56,7 @@
     "react-native-builder-bob": "^0.20.0",
     "release-it": "^15.0.0",
     "sonar-scanner": "^3.1.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.5.2"
   },
   "resolutions": {
@@ -70,13 +71,6 @@
     "node": ">= 16.0.0"
   },
   "packageManager": "^yarn@1.22.15",
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
