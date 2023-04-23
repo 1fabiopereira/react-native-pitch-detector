@@ -13,7 +13,7 @@ import {
   PicthDetectorErrors,
 } from '../../types';
 
-class InternalPitchDetector {
+export class InternalPitchDetector {
   private module?: NativeModuleImplementation;
   private event?: NativeEventEmitter;
 
@@ -22,9 +22,8 @@ class InternalPitchDetector {
 
     if (this.module) {
       this.event = new NativeEventEmitter(this.module);
-    }
-
-    if (!module) {
+    } else {
+      /* istanbul ignore next */
       throw new PicthDetectorError(PicthDetectorErrors.LINKING_ERROR);
     }
   }
@@ -149,4 +148,7 @@ class InternalPitchDetector {
   }
 }
 
+/**
+ * Export an instance of InternalPitchDetector
+ */
 export const PitchDetector = new InternalPitchDetector();
