@@ -1,6 +1,6 @@
 # Before you start
 
-React Native Picth Detector is a module created to be used alongside [React Native](https://github.com/facebook/react-native), so previous experience is required. If you need, can start with their [Getting Started](https://reactnative.dev/docs/getting-started) tutorial and come back here after.
+React Native Pitch Detector is a module created to be used alongside [React Native](https://github.com/facebook/react-native), so previous experience is required. If you need, can start with their [Getting Started](https://reactnative.dev/docs/getting-started) tutorial and come back here after.
 
 This module is compatible with Android and iOS devices, we assume that you have Android and iOS environment configured, in the case that you don't have, we suggest that you setup enviroment before.
 

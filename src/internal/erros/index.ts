@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import { PicthDetectorErrors } from '../../types';
+import { PitchDetectorErrors } from '../../types';
 
 const base =
   `The package 'react-native-pitch-detector' find a error. Make sure: \n\n` +
@@ -22,13 +22,13 @@ const permission =
     android: `- You have added '<uses-permission android:name="android.permission.RECORD_AUDIO" />' on AndroidManifest.xml and request permission before start record.\n`,
   });
 
-export class PicthDetectorError {
-  constructor(type: PicthDetectorErrors) {
-    if (type === PicthDetectorErrors.LINKING_ERROR) {
+export class PitchDetectorError {
+  constructor(type: PitchDetectorErrors) {
+    if (type === PitchDetectorErrors.LINKING_ERROR) {
       return new Error(linking);
     }
 
-    if (type === PicthDetectorErrors.PERMISSIONS_ERROR) {
+    if (type === PitchDetectorErrors.PERMISSIONS_ERROR) {
       return new Error(permission);
     }
 

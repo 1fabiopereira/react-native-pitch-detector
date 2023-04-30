@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'React Native Picth Detector',
+  title: 'React Native Pitch Detector',
   staticDirectories: ['static'],
   tagline: 'High performance real time pitch detection.',
   url: 'https://1fabiopereira.github.io/',
@@ -51,9 +51,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'React Native Picth Detector',
+        title: 'React Native Pitch Detector',
         logo: {
-          alt: 'React Native Picth Detector',
+          alt: 'React Native Pitch Detector',
           src: 'img/react-native-pitch-detector.svg',
         },
         items: [
