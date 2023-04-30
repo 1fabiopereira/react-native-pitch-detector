@@ -1,7 +1,7 @@
 import { NativeModules } from 'react-native';
 
-import { PicthDetectorErrors } from '../../../types';
-import { PicthDetectorError } from '../../erros';
+import { PitchDetectorErrors } from '../../../types';
+import { PitchDetectorError } from '../../erros';
 
 import { Permissions } from '../../permissions';
 import { PitchDetector } from '..';
@@ -54,7 +54,7 @@ describe('PitchDetector', () => {
   });
 
   it('should throw error when start method will be called and not have audio record permission', async () => {
-    const error = new PicthDetectorError(PicthDetectorErrors.PERMISSIONS_ERROR);
+    const error = new PitchDetectorError(PitchDetectorErrors.PERMISSIONS_ERROR);
     const spy = jest.spyOn(console, 'warn');
 
     Permissions.audio = asyncMock(false);

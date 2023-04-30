@@ -29,7 +29,7 @@ export type PermissionsHandlers = {
   CheckPermission: (compare?: Comparable) => Response;
 };
 
-export enum PicthDetectorErrors {
+export enum PitchDetectorErrors {
   BASE,
   LINKING_ERROR,
   PERMISSIONS_ERROR,
@@ -100,14 +100,14 @@ export type PitchEstimationIOSAlgorithm =
   | 'QUINNS_SECOND'
   | 'YIN';
 
-export type PicthDetectorAndroidConfig = {
+export type PitchDetectorAndroidConfig = {
   algorithm?: PitchEstimationAndroidAlgorithm;
   bufferOverLap?: Int32;
   bufferSize?: Int32;
   sampleRate?: Float;
 };
 
-export type PicthDetectorIOSConfig = {
+export type PitchDetectorIOSConfig = {
   algorithm?: PitchEstimationIOSAlgorithm;
   bufferSize?: Int32;
 };
@@ -115,9 +115,9 @@ export type PicthDetectorIOSConfig = {
 /**
  * Pitch detector configuration.
  */
-export type PicthDetectorConfig = {
-  android?: PicthDetectorAndroidConfig;
-  ios?: PicthDetectorIOSConfig;
+export type PitchDetectorConfig = {
+  android?: PitchDetectorAndroidConfig;
+  ios?: PitchDetectorIOSConfig;
 };
 
 /**
@@ -130,7 +130,7 @@ export interface NativeModuleImplementation extends NativeModule {
    * @returns Promise<void>
    */
   start: (
-    config: PicthDetectorAndroidConfig | PicthDetectorIOSConfig
+    config: PitchDetectorAndroidConfig | PitchDetectorIOSConfig
   ) => Promise<void>;
 
   /**
