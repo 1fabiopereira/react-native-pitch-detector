@@ -1,16 +1,16 @@
 import { NativeModules, NativeEventEmitter, Platform } from 'react-native';
 import { Permissions } from '../permissions';
-import { PicthDetectorError } from '../erros';
+import { PitchDetectorError } from '../erros';
 import { merge } from '../utils';
 
 import {
   type Callback,
   type NativeModuleImplementation,
-  type PicthDetectorConfig,
+  type PitchDetectorConfig,
   type Subscription,
-  type PicthDetectorAndroidConfig,
-  type PicthDetectorIOSConfig,
-  PicthDetectorErrors,
+  type PitchDetectorAndroidConfig,
+  type PitchDetectorIOSConfig,
+  PitchDetectorErrors,
 } from '../../types';
 
 export class InternalPitchDetector {
@@ -24,13 +24,13 @@ export class InternalPitchDetector {
       this.event = new NativeEventEmitter(this.module);
     } else {
       /* istanbul ignore next */
-      throw new PicthDetectorError(PicthDetectorErrors.LINKING_ERROR);
+      throw new PitchDetectorError(PitchDetectorErrors.LINKING_ERROR);
     }
   }
 
   /**
-   * Returns a default PicthDetector configs
-   * @returns PicthDetectorConfig
+   * Returns a default PitchDetector configs
+   * @returns PitchDetectorConfig
    * @example
    * ```ts
    * {
@@ -46,7 +46,7 @@ export class InternalPitchDetector {
    *  }
    * }
    */
-  private getDefaultConfig(): PicthDetectorConfig {
+  private getDefaultConfig(): PitchDetectorConfig {
     return {
       android: {
         algorithm: 'YIN',
@@ -88,15 +88,15 @@ export class InternalPitchDetector {
    * @param config
    * @returns Promise<void>
    */
-  async start(config?: PicthDetectorConfig): Promise<void> {
+  async start(config?: PitchDetectorConfig): Promise<void> {
     try {
       const permission = await this.hasPermissions();
 
       if (!permission) {
-        throw new PicthDetectorError(PicthDetectorErrors.PERMISSIONS_ERROR);
+        throw new PitchDetectorError(PitchDetectorErrors.PERMISSIONS_ERROR);
       }
 
-      const configuration = merge<PicthDetectorConfig>(
+      const configuration = merge<PitchDetectorConfig>(
         this.getDefaultConfig(),
         config || {}
       );
@@ -104,7 +104,7 @@ export class InternalPitchDetector {
       const params = Platform.select({
         android: configuration.android as unknown,
         ios: configuration.ios as unknown,
-      }) as PicthDetectorIOSConfig | PicthDetectorAndroidConfig;
+      }) as PitchDetectorIOSConfig | PitchDetectorAndroidConfig;
 
       await this.module?.start(params);
     } catch (err: unknown) {
