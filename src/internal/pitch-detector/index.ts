@@ -133,10 +133,11 @@ export class InternalPitchDetector {
 
   /**
    * Method event listeners
+   * @deprecated since version 0.1.4, instead use `removeAllListeners`
    */
   removeListener(subscription: Subscription): void {
     if (subscription) {
-      this.event?.removeSubscription(subscription);
+      this.event?.removeAllListeners('data');
     }
   }
 
