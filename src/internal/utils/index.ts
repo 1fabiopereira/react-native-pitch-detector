@@ -6,9 +6,9 @@
 export function isObject(item: any) {
   return Boolean(
     item &&
-      typeof item === 'object' &&
-      !Array.isArray(item) &&
-      !(item instanceof Date)
+    typeof item === 'object' &&
+    !Array.isArray(item) &&
+    !(item instanceof Date)
   );
 }
 
@@ -32,5 +32,5 @@ export function merge<T>(target: any, ...sources: any): T {
     }
   }
 
-  return merge(target, ...sources) as T;
+  return merge(target, ...sources);
 }
