@@ -32,5 +32,5 @@ export function merge<T>(target: any, ...sources: any): T {
     }
   }
 
-  return merge(target, ...sources) as T;
+  return merge(target, ...sources);
 }
