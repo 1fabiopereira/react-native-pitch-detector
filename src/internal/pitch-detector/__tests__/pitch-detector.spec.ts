@@ -79,14 +79,6 @@ describe('PitchDetector', () => {
     }
   );
 
-  it('should not call removeSubscription method from event emitter when removeListener method will be called with no subscription id', async () => {
-    const spy = jest.spyOn(Object(PitchDetector).event, 'removeSubscription');
-
-    await PitchDetector.removeListener(undefined);
-
-    expect(spy).toBeCalledTimes(0);
-  });
-
   it.each([['start'], ['stop'], ['isRecording']])(
     'should throw error when native %s method fail',
     async (method: string) => {

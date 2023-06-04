@@ -20,9 +20,9 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    const subscription = PitchDetector.addListener(setData);
+    PitchDetector.addListener(setData);
     return () => {
-      PitchDetector.removeListener(subscription);
+      PitchDetector.removeListener();
     };
   }, []);
 
