@@ -6,9 +6,9 @@
 export function isObject(item: any) {
   return Boolean(
     item &&
-    typeof item === 'object' &&
-    !Array.isArray(item) &&
-    !(item instanceof Date)
+      typeof item === 'object' &&
+      !Array.isArray(item) &&
+      !(item instanceof Date)
   );
 }
 
