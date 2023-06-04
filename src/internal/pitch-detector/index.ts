@@ -98,7 +98,7 @@ export class InternalPitchDetector {
 
       const configuration = merge<PitchDetectorConfig>(
         this.getDefaultConfig(),
-        config ?? {}``
+        config ?? {}
       );
 
       const params = Platform.select({
