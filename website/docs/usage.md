@@ -19,7 +19,7 @@ await PitchDetector.isRecording(); // Promise<true | false>
 const subscription = PitchDetector.addListener(console.log) // { frequency: 440.14782, tone: "C#" }
 
 // To stop listen results
-PitchDetector.removeListener(subscription)
+PitchDetector.removeListener()
 
 ```
 
