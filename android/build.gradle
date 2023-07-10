@@ -71,7 +71,7 @@ def kotlin_version = getExtOrDefault("kotlinVersion")
 dependencies {
   implementation fileTree(dir: "./src/libs", include: ["*.jar"])
   //noinspection GradleDependency
-  implementation ("com.jtransc:jtransc-rt:0.6.7")
+  
   // For < 0.71, this will be from the local maven repo
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   // implementation ("com.facebook.react:react-android:$version")
