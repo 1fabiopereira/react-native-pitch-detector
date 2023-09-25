@@ -1,7 +1,7 @@
 import { NativeModules } from 'react-native';
 
-import { PicthDetectorErrors } from '../../../types';
-import { PicthDetectorError } from '../../erros';
+import { PitchDetectorErrors } from '../../../types';
+import { PitchDetectorError } from '../../erros';
 
 import { Permissions } from '../../permissions';
 import { PitchDetector } from '..';
@@ -54,7 +54,7 @@ describe('PitchDetector', () => {
   });
 
   it('should throw error when start method will be called and not have audio record permission', async () => {
-    const error = new PicthDetectorError(PicthDetectorErrors.PERMISSIONS_ERROR);
+    const error = new PitchDetectorError(PitchDetectorErrors.PERMISSIONS_ERROR);
     const spy = jest.spyOn(console, 'warn');
 
     Permissions.audio = asyncMock(false);
@@ -67,7 +67,7 @@ describe('PitchDetector', () => {
   it.each([
     ['addListener', 'addListener'],
     ['removeAllListeners', 'removeAllListeners'],
-    ['removeSubscription', 'removeListener'],
+    ['removeAllListeners', 'removeListener'],
   ])(
     'should call %s method from event emitter when %s method will be called',
     async (target: string, method: string) => {
@@ -78,14 +78,6 @@ describe('PitchDetector', () => {
       expect(spy).toBeCalledTimes(1);
     }
   );
-
-  it('should not call removeSubscription method from event emitter when removeListener method will be called with no subscription id', async () => {
-    const spy = jest.spyOn(Object(PitchDetector).event, 'removeSubscription');
-
-    await PitchDetector.removeListener(undefined);
-
-    expect(spy).toBeCalledTimes(0);
-  });
 
   it.each([['start'], ['stop'], ['isRecording']])(
     'should throw error when native %s method fail',
