@@ -1,7 +1,4 @@
 {
   "extends": "./tsconfig",
-  "exclude": [
-    "example",
-    "website"
-  ]
+  "exclude": ["example", "website", "jest.config.ts"]
 }
