@@ -12,14 +12,14 @@ jobs:
 
     steps:
     - name: Git checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
-    - name: Use Node.js Version 16.x
-      uses: actions/setup-node@v2
+    - name: Use Node.js Version 18.x
+      uses: actions/setup-node@v3
       with:
-        node-version: 16.14.x
+        node-version: 18.18.x
 
     - name: Install dependencies
       run: yarn install --frozen-lockfile
@@ -40,7 +40,7 @@ jobs:
       run: yarn prepack
 
     - name: SonarCloud Scan Typescript
-      run: yarn sonar
+      uses: SonarSource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
