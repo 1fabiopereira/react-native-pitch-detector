@@ -29,13 +29,13 @@ PitchDetector.removeListener()
 To use microphone we need give permission to our app, for that we use a [react-native-permissions](https://github.com/zoontek/react-native-permissions) library.
 
 ```shell
- yarn add react-native-permissions
+ yarn add react-native-permissions@3
 ```
 
 Or using npm:
 
 ```shell
-npm install react-native-permissions
+npm install react-native-permissions@3
 ```
 
 After that, on `package.json` file add de following lines:
