@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Git checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Use Node.js Version 16.x
-        uses: actions/setup-node@v2
+      - name: Use Node.js Version 20.11.x
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.14.x
+          node-version: 20.11.x
 
       - name: Test Build
         run: |
@@ -30,12 +30,12 @@ jobs:
     
     steps:
       - name: Git checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v23
 
-      - name: 'Use Node.js Version 16.x'
-        uses: actions/setup-node@v2
+      - name: 'Use Node.js Version 20.11.x'
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.14.x
+          node-version: 20.11.x
 
       - name: Add key to allow access to repository
         env:
