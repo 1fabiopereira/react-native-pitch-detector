@@ -138,6 +138,6 @@
     ]
   },
   "dependencies": {
-    "react-native-permissions": "^3.8.0"
+    "react-native-permissions": "^4.0.4"
   }
 }
