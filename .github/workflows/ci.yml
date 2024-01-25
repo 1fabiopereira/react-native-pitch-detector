@@ -16,10 +16,10 @@ jobs:
       with:
         fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
-    - name: Use Node.js Version 18.x
+    - name: Use Node.js Version 20.11.x
       uses: actions/setup-node@v3
       with:
-        node-version: 18.18.x
+        node-version: 20.11.x
 
     - name: Install dependencies
       run: yarn install --frozen-lockfile
